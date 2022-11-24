@@ -1,10 +1,35 @@
+
+import javax.swing.*;
 import java.sql.*;
-import java.util.ArrayList;
 
 public class Main {
+    public static Connection c;
+
     public static void main(String[] args) throws SQLException,ClassNotFoundException {
-        String sql_statement = "select * from Video";
-        Connection c = DriverManager.getConnection(
+        initializedDB();
+
+        String name = JOptionPane.showInputDialog("Find a video by name");
+        String sql_statement = "select * from video where videoName = ? ;";
+        PreparedStatement pps = c.prepareStatement(sql_statement); //SQL injection
+        pps.setString(1,name);
+        ResultSet rs = pps.executeQuery();
+        if(rs.next()){
+            int title = Integer.parseInt(rs.getString("videoId"));
+            String vname = rs.getString("videoName");
+            int price = Integer.parseInt(rs.getString("price"));
+            JOptionPane.showMessageDialog(null,new Video(title, vname, price));
+        }else{
+            JOptionPane.showMessageDialog(null,"video not found.");
+        }
+
+
+
+
+
+        closeDB();
+    }
+    private static void initializedDB() throws SQLException{
+        c = DriverManager.getConnection(
                 "jdbc:mysql://localhost:3306/wilsonvideodb",
                 "wilson" ,
                 "password");
@@ -13,24 +38,9 @@ public class Main {
         }else{
             System.out.println("Cannot connect to database;");
         }
+    }
 
-        PreparedStatement pps = c.prepareStatement(sql_statement);
-        ResultSet rs = pps.executeQuery();
-
-        ArrayList<Video>  result = new ArrayList<Video>();
-        while(rs.next()){
-            Video v = new Video(Integer.parseInt(rs.getString("videoId")) ,
-                    rs.getString("videoName"),
-                    Integer.parseInt(rs.getString("price"))
-                    );
-            result.add(v);
-        }
-
-        for(Video v : result){
-            System.out.println(v.toString());
-        }
-
+    private static void closeDB() throws SQLException{
         c.close();
-
     }
 }
