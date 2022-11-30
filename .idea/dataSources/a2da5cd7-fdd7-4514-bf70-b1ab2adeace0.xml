@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<dataSource name="wilsonvideodb@localhost">
+<dataSource name="web1@localhost">
   <database-model serializer="dbm" dbms="MARIADB" family-id="MARIADB" format-version="4.43">
     <root id="1">
       <DefaultCasing>lower/lower</DefaultCasing>
@@ -1263,7 +1263,7 @@
     <collation id="323" parent="1" name="eucjpms_nopad_bin">
       <Charset>eucjpms</Charset>
     </collation>
-    <schema id="324" parent="1" name="wilsonvideodb">
+    <schema id="324" parent="1" name="web1">
       <Current>1</Current>
       <CollationName>utf8mb3_general_ci</CollationName>
     </schema>
@@ -1291,7 +1291,7 @@
     <schema id="332" parent="1" name="sys">
       <CollationName>utf8mb3_general_ci</CollationName>
     </schema>
-    <schema id="333" parent="1" name="web1">
+    <schema id="333" parent="1" name="wilsonvideodb">
       <CollationName>utf8mb3_general_ci</CollationName>
     </schema>
     <user id="334" parent="1" name="mariadb.sys">
@@ -1315,41 +1315,563 @@
     <user id="342" parent="1" name="wilson">
       <Host>localhost</Host>
     </user>
-    <table id="343" parent="324" name="video">
+    <table id="343" parent="324" name="admins">
       <Engine>InnoDB</Engine>
-      <CollationName>utf8mb3_general_ci</CollationName>
+      <CollationName>utf8mb4_unicode_ci</CollationName>
     </table>
-    <column id="344" parent="343" name="videoId">
-      <AutoIncrement>67</AutoIncrement>
-      <DataType>int(11)|0s</DataType>
+    <table id="344" parent="324" name="ads">
+      <Engine>InnoDB</Engine>
+      <CollationName>utf8mb4_unicode_ci</CollationName>
+    </table>
+    <table id="345" parent="324" name="bottoms">
+      <Engine>InnoDB</Engine>
+      <CollationName>utf8mb4_unicode_ci</CollationName>
+    </table>
+    <table id="346" parent="324" name="failed_jobs">
+      <Engine>InnoDB</Engine>
+      <CollationName>utf8mb4_unicode_ci</CollationName>
+    </table>
+    <table id="347" parent="324" name="images">
+      <Engine>InnoDB</Engine>
+      <CollationName>utf8mb4_unicode_ci</CollationName>
+    </table>
+    <table id="348" parent="324" name="menus">
+      <Engine>InnoDB</Engine>
+      <CollationName>utf8mb4_unicode_ci</CollationName>
+    </table>
+    <table id="349" parent="324" name="migrations">
+      <Engine>InnoDB</Engine>
+      <CollationName>utf8mb4_unicode_ci</CollationName>
+    </table>
+    <table id="350" parent="324" name="mvims">
+      <Engine>InnoDB</Engine>
+      <CollationName>utf8mb4_unicode_ci</CollationName>
+    </table>
+    <table id="351" parent="324" name="news">
+      <Engine>InnoDB</Engine>
+      <CollationName>utf8mb4_unicode_ci</CollationName>
+    </table>
+    <table id="352" parent="324" name="personal_access_tokens">
+      <Engine>InnoDB</Engine>
+      <CollationName>utf8mb4_unicode_ci</CollationName>
+    </table>
+    <table id="353" parent="324" name="sub_menus">
+      <Engine>InnoDB</Engine>
+      <CollationName>utf8mb4_unicode_ci</CollationName>
+    </table>
+    <table id="354" parent="324" name="titles">
+      <Engine>InnoDB</Engine>
+      <CollationName>utf8mb4_unicode_ci</CollationName>
+    </table>
+    <table id="355" parent="324" name="totals">
+      <Engine>InnoDB</Engine>
+      <CollationName>utf8mb4_unicode_ci</CollationName>
+    </table>
+    <column id="356" parent="343" name="id">
+      <AutoIncrement>7</AutoIncrement>
+      <DataType>bigint(20) unsigned|0s</DataType>
       <NotNull>1</NotNull>
       <Position>1</Position>
     </column>
-    <column id="345" parent="343" name="videoName">
-      <DataType>varchar(50)|0s</DataType>
+    <column id="357" parent="343" name="acc">
+      <DataType>varchar(32)|0s</DataType>
+      <NotNull>1</NotNull>
       <Position>2</Position>
     </column>
-    <column id="346" parent="343" name="price">
-      <DataType>int(11)|0s</DataType>
+    <column id="358" parent="343" name="pw">
+      <DataType>varchar(256)|0s</DataType>
+      <NotNull>1</NotNull>
       <Position>3</Position>
     </column>
-    <index id="347" parent="343" name="PRIMARY">
-      <ColNames>videoId</ColNames>
+    <column id="359" parent="343" name="created_at">
+      <DataType>timestamp|0s</DataType>
+      <Position>4</Position>
+    </column>
+    <column id="360" parent="343" name="updated_at">
+      <DataType>timestamp|0s</DataType>
+      <Position>5</Position>
+    </column>
+    <index id="361" parent="343" name="PRIMARY">
+      <ColNames>id</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
-    <index id="348" parent="343" name="Video_videoId_uindex">
-      <ColNames>videoId</ColNames>
-      <Type>btree</Type>
-      <Unique>1</Unique>
-    </index>
-    <key id="349" parent="343" name="PRIMARY">
+    <key id="362" parent="343" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
     </key>
-    <key id="350" parent="343" name="Video_videoId_uindex">
-      <UnderlyingIndexName>Video_videoId_uindex</UnderlyingIndexName>
+    <column id="363" parent="344" name="id">
+      <AutoIncrement>7</AutoIncrement>
+      <DataType>bigint(20) unsigned|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+    </column>
+    <column id="364" parent="344" name="text">
+      <DataType>varchar(64)|0s</DataType>
+      <Position>2</Position>
+    </column>
+    <column id="365" parent="344" name="img">
+      <DataType>varchar(127)|0s</DataType>
+      <Position>3</Position>
+    </column>
+    <column id="366" parent="344" name="sh">
+      <DataType>tinyint(1)|0s</DataType>
+      <DefaultExpression>1</DefaultExpression>
+      <NotNull>1</NotNull>
+      <Position>4</Position>
+    </column>
+    <column id="367" parent="344" name="deleted_at">
+      <DataType>timestamp|0s</DataType>
+      <Position>5</Position>
+    </column>
+    <column id="368" parent="344" name="created_at">
+      <DataType>timestamp|0s</DataType>
+      <Position>6</Position>
+    </column>
+    <column id="369" parent="344" name="updated_at">
+      <DataType>timestamp|0s</DataType>
+      <Position>7</Position>
+    </column>
+    <index id="370" parent="344" name="PRIMARY">
+      <ColNames>id</ColNames>
+      <Type>btree</Type>
+      <Unique>1</Unique>
+    </index>
+    <key id="371" parent="344" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
+    </key>
+    <column id="372" parent="345" name="id">
+      <AutoIncrement>2</AutoIncrement>
+      <DataType>bigint(20) unsigned|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+    </column>
+    <column id="373" parent="345" name="bottom">
+      <DataType>varchar(64)|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>2</Position>
+    </column>
+    <column id="374" parent="345" name="created_at">
+      <DataType>timestamp|0s</DataType>
+      <Position>3</Position>
+    </column>
+    <column id="375" parent="345" name="updated_at">
+      <DataType>timestamp|0s</DataType>
+      <Position>4</Position>
+    </column>
+    <index id="376" parent="345" name="PRIMARY">
+      <ColNames>id</ColNames>
+      <Type>btree</Type>
+      <Unique>1</Unique>
+    </index>
+    <key id="377" parent="345" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
+    </key>
+    <column id="378" parent="346" name="id">
+      <AutoIncrement>1</AutoIncrement>
+      <DataType>bigint(20) unsigned|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+    </column>
+    <column id="379" parent="346" name="uuid">
+      <DataType>varchar(255)|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>2</Position>
+    </column>
+    <column id="380" parent="346" name="connection">
+      <DataType>text|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>3</Position>
+    </column>
+    <column id="381" parent="346" name="queue">
+      <DataType>text|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>4</Position>
+    </column>
+    <column id="382" parent="346" name="payload">
+      <DataType>longtext|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>5</Position>
+    </column>
+    <column id="383" parent="346" name="exception">
+      <DataType>longtext|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>6</Position>
+    </column>
+    <column id="384" parent="346" name="failed_at">
+      <DataType>timestamp|0s</DataType>
+      <DefaultExpression>current_timestamp()</DefaultExpression>
+      <NotNull>1</NotNull>
+      <Position>7</Position>
+    </column>
+    <index id="385" parent="346" name="PRIMARY">
+      <ColNames>id</ColNames>
+      <Type>btree</Type>
+      <Unique>1</Unique>
+    </index>
+    <index id="386" parent="346" name="failed_jobs_uuid_unique">
+      <ColNames>uuid</ColNames>
+      <Type>btree</Type>
+      <Unique>1</Unique>
+    </index>
+    <key id="387" parent="346" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
+    </key>
+    <key id="388" parent="346" name="failed_jobs_uuid_unique">
+      <UnderlyingIndexName>failed_jobs_uuid_unique</UnderlyingIndexName>
+    </key>
+    <column id="389" parent="347" name="id">
+      <AutoIncrement>18</AutoIncrement>
+      <DataType>bigint(20) unsigned|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+    </column>
+    <column id="390" parent="347" name="img">
+      <DataType>varchar(64)|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>2</Position>
+    </column>
+    <column id="391" parent="347" name="sh">
+      <DataType>tinyint(1)|0s</DataType>
+      <DefaultExpression>1</DefaultExpression>
+      <NotNull>1</NotNull>
+      <Position>3</Position>
+    </column>
+    <column id="392" parent="347" name="created_at">
+      <DataType>timestamp|0s</DataType>
+      <Position>4</Position>
+    </column>
+    <column id="393" parent="347" name="updated_at">
+      <DataType>timestamp|0s</DataType>
+      <Position>5</Position>
+    </column>
+    <index id="394" parent="347" name="PRIMARY">
+      <ColNames>id</ColNames>
+      <Type>btree</Type>
+      <Unique>1</Unique>
+    </index>
+    <key id="395" parent="347" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
+    </key>
+    <column id="396" parent="348" name="id">
+      <AutoIncrement>4</AutoIncrement>
+      <DataType>bigint(20) unsigned|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+    </column>
+    <column id="397" parent="348" name="text">
+      <DataType>varchar(32)|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>2</Position>
+    </column>
+    <column id="398" parent="348" name="href">
+      <DataType>varchar(255)|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>3</Position>
+    </column>
+    <column id="399" parent="348" name="sh">
+      <DataType>tinyint(1)|0s</DataType>
+      <DefaultExpression>1</DefaultExpression>
+      <NotNull>1</NotNull>
+      <Position>4</Position>
+    </column>
+    <column id="400" parent="348" name="created_at">
+      <DataType>timestamp|0s</DataType>
+      <Position>5</Position>
+    </column>
+    <column id="401" parent="348" name="updated_at">
+      <DataType>timestamp|0s</DataType>
+      <Position>6</Position>
+    </column>
+    <index id="402" parent="348" name="PRIMARY">
+      <ColNames>id</ColNames>
+      <Type>btree</Type>
+      <Unique>1</Unique>
+    </index>
+    <key id="403" parent="348" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
+    </key>
+    <column id="404" parent="349" name="id">
+      <AutoIncrement>21</AutoIncrement>
+      <DataType>int(10) unsigned|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+    </column>
+    <column id="405" parent="349" name="migration">
+      <DataType>varchar(255)|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>2</Position>
+    </column>
+    <column id="406" parent="349" name="batch">
+      <DataType>int(11)|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>3</Position>
+    </column>
+    <index id="407" parent="349" name="PRIMARY">
+      <ColNames>id</ColNames>
+      <Type>btree</Type>
+      <Unique>1</Unique>
+    </index>
+    <key id="408" parent="349" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
+    </key>
+    <column id="409" parent="350" name="id">
+      <AutoIncrement>11</AutoIncrement>
+      <DataType>bigint(20) unsigned|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+    </column>
+    <column id="410" parent="350" name="img">
+      <DataType>varchar(64)|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>2</Position>
+    </column>
+    <column id="411" parent="350" name="sh">
+      <DataType>tinyint(1)|0s</DataType>
+      <DefaultExpression>1</DefaultExpression>
+      <NotNull>1</NotNull>
+      <Position>3</Position>
+    </column>
+    <column id="412" parent="350" name="created_at">
+      <DataType>timestamp|0s</DataType>
+      <Position>4</Position>
+    </column>
+    <column id="413" parent="350" name="updated_at">
+      <DataType>timestamp|0s</DataType>
+      <Position>5</Position>
+    </column>
+    <index id="414" parent="350" name="PRIMARY">
+      <ColNames>id</ColNames>
+      <Type>btree</Type>
+      <Unique>1</Unique>
+    </index>
+    <key id="415" parent="350" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
+    </key>
+    <column id="416" parent="351" name="id">
+      <AutoIncrement>7</AutoIncrement>
+      <DataType>bigint(20) unsigned|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+    </column>
+    <column id="417" parent="351" name="text">
+      <DataType>text|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>2</Position>
+    </column>
+    <column id="418" parent="351" name="sh">
+      <DataType>tinyint(1)|0s</DataType>
+      <DefaultExpression>1</DefaultExpression>
+      <NotNull>1</NotNull>
+      <Position>3</Position>
+    </column>
+    <column id="419" parent="351" name="created_at">
+      <DataType>timestamp|0s</DataType>
+      <Position>4</Position>
+    </column>
+    <column id="420" parent="351" name="updated_at">
+      <DataType>timestamp|0s</DataType>
+      <Position>5</Position>
+    </column>
+    <index id="421" parent="351" name="PRIMARY">
+      <ColNames>id</ColNames>
+      <Type>btree</Type>
+      <Unique>1</Unique>
+    </index>
+    <key id="422" parent="351" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
+    </key>
+    <column id="423" parent="352" name="id">
+      <AutoIncrement>1</AutoIncrement>
+      <DataType>bigint(20) unsigned|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+    </column>
+    <column id="424" parent="352" name="tokenable_type">
+      <DataType>varchar(255)|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>2</Position>
+    </column>
+    <column id="425" parent="352" name="tokenable_id">
+      <DataType>bigint(20) unsigned|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>3</Position>
+    </column>
+    <column id="426" parent="352" name="name">
+      <DataType>varchar(255)|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>4</Position>
+    </column>
+    <column id="427" parent="352" name="token">
+      <DataType>varchar(64)|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>5</Position>
+    </column>
+    <column id="428" parent="352" name="abilities">
+      <DataType>text|0s</DataType>
+      <Position>6</Position>
+    </column>
+    <column id="429" parent="352" name="last_used_at">
+      <DataType>timestamp|0s</DataType>
+      <Position>7</Position>
+    </column>
+    <column id="430" parent="352" name="created_at">
+      <DataType>timestamp|0s</DataType>
+      <Position>8</Position>
+    </column>
+    <column id="431" parent="352" name="updated_at">
+      <DataType>timestamp|0s</DataType>
+      <Position>9</Position>
+    </column>
+    <index id="432" parent="352" name="PRIMARY">
+      <ColNames>id</ColNames>
+      <Type>btree</Type>
+      <Unique>1</Unique>
+    </index>
+    <index id="433" parent="352" name="personal_access_tokens_token_unique">
+      <ColNames>token</ColNames>
+      <Type>btree</Type>
+      <Unique>1</Unique>
+    </index>
+    <index id="434" parent="352" name="personal_access_tokens_tokenable_type_tokenable_id_index">
+      <ColNames>tokenable_type
+tokenable_id</ColNames>
+      <Type>btree</Type>
+    </index>
+    <key id="435" parent="352" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
+    </key>
+    <key id="436" parent="352" name="personal_access_tokens_token_unique">
+      <UnderlyingIndexName>personal_access_tokens_token_unique</UnderlyingIndexName>
+    </key>
+    <column id="437" parent="353" name="id">
+      <AutoIncrement>7</AutoIncrement>
+      <DataType>bigint(20) unsigned|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+    </column>
+    <column id="438" parent="353" name="text">
+      <DataType>varchar(32)|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>2</Position>
+    </column>
+    <column id="439" parent="353" name="href">
+      <DataType>varchar(32)|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>3</Position>
+    </column>
+    <column id="440" parent="353" name="menu_id">
+      <DataType>int(10) unsigned|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>4</Position>
+    </column>
+    <column id="441" parent="353" name="created_at">
+      <DataType>timestamp|0s</DataType>
+      <Position>5</Position>
+    </column>
+    <column id="442" parent="353" name="updated_at">
+      <DataType>timestamp|0s</DataType>
+      <Position>6</Position>
+    </column>
+    <index id="443" parent="353" name="PRIMARY">
+      <ColNames>id</ColNames>
+      <Type>btree</Type>
+      <Unique>1</Unique>
+    </index>
+    <key id="444" parent="353" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
+    </key>
+    <column id="445" parent="354" name="id">
+      <AutoIncrement>15</AutoIncrement>
+      <DataType>bigint(20) unsigned|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+    </column>
+    <column id="446" parent="354" name="text">
+      <DataType>varchar(64)|0s</DataType>
+      <Position>2</Position>
+    </column>
+    <column id="447" parent="354" name="img">
+      <DataType>varchar(127)|0s</DataType>
+      <Position>3</Position>
+    </column>
+    <column id="448" parent="354" name="sh">
+      <DataType>tinyint(1)|0s</DataType>
+      <DefaultExpression>0</DefaultExpression>
+      <NotNull>1</NotNull>
+      <Position>4</Position>
+    </column>
+    <column id="449" parent="354" name="deleted_at">
+      <DataType>timestamp|0s</DataType>
+      <Position>5</Position>
+    </column>
+    <column id="450" parent="354" name="created_at">
+      <DataType>timestamp|0s</DataType>
+      <Position>6</Position>
+    </column>
+    <column id="451" parent="354" name="updated_at">
+      <DataType>timestamp|0s</DataType>
+      <Position>7</Position>
+    </column>
+    <index id="452" parent="354" name="PRIMARY">
+      <ColNames>id</ColNames>
+      <Type>btree</Type>
+      <Unique>1</Unique>
+    </index>
+    <key id="453" parent="354" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
+    </key>
+    <column id="454" parent="355" name="id">
+      <AutoIncrement>2</AutoIncrement>
+      <DataType>bigint(20) unsigned|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+    </column>
+    <column id="455" parent="355" name="total">
+      <DataType>bigint(20) unsigned|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>2</Position>
+    </column>
+    <column id="456" parent="355" name="created_at">
+      <DataType>timestamp|0s</DataType>
+      <Position>3</Position>
+    </column>
+    <column id="457" parent="355" name="updated_at">
+      <DataType>timestamp|0s</DataType>
+      <Position>4</Position>
+    </column>
+    <index id="458" parent="355" name="PRIMARY">
+      <ColNames>id</ColNames>
+      <Type>btree</Type>
+      <Unique>1</Unique>
+    </index>
+    <key id="459" parent="355" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
     </key>
   </database-model>
 </dataSource>
